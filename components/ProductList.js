@@ -1,5 +1,7 @@
 import { useQuery } from "@apollo/react-hooks";
 import gql from 'graphql-tag';
+import {productQuery} from "../_query/product";
+import {queryDecorator} from "../_services/decorators";
 
 const ProductList = (props) => {
     const { loading, error, data } = useQuery(gql`
@@ -26,5 +28,7 @@ const ProductList = (props) => {
         </div>
     );
 };
+
+queryDecorator(productQuery)(ProductList);
 
 export default ProductList;
